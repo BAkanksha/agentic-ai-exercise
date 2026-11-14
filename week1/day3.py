@@ -1,6 +1,3 @@
-# Week 1 - Day 3 : Many LLMs answer one question, then one LLM judges them
-# Simple version: runs top to bottom
-# Competitors: 2 local Ollama models + Gemini + Groq. Judge: Groq
 
 import os
 import json
@@ -17,6 +14,8 @@ groq_api_key = os.getenv("GROQ_API_KEY")
 print("Google key loaded:", bool(google_api_key))
 print("Groq key loaded:", bool(groq_api_key))
 print()
+
+print("Akanksha Singh")
 
 # All of these providers have an OpenAI compatible endpoint, so we use the OpenAI class
 ollama = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
