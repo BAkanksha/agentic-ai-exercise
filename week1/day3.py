@@ -44,6 +44,7 @@ print()
 # Step 2: ask the same question to each model and save the answers
 competitors = []
 answers = []
+clients_by_name = {}
 messages = [{"role": "user", "content": question}]
 
 
@@ -63,6 +64,7 @@ def run_competitor(client, model_name):
         if "</think>" in answer:
             answer = answer.split("</think>")[-1].strip()
         record(model_name, answer)
+        clients_by_name[model_name] = client
         # record(model_name, answer)
     except Exception as e:
         print(f"--- {model_name} FAILED: {e}")
@@ -123,3 +125,29 @@ ranks = results_dict["results"]
 for index, result in enumerate(ranks):
     competitor = competitors[int(result) - 1]
     print(f"Rank {index+1}: {competitor}")
+
+# Step 7: Evaluator-Optimizer - let the worst model improve its answer
+best = ranks[0]
+worst = ranks[-1]
+best_model = competitors[int(best) - 1]
+worst_model = competitors[int(worst) - 1]
+
+improve = f"""Question: {question}
+
+Your original answer:
+{answers[int(worst) - 1]}
+
+A stronger answer from another model:
+{answers[int(best) - 1]}
+
+Rewrite your answer so that it is clearer and stronger. Keep it short. Answer only with the improved answer."""
+
+response = clients_by_name[worst_model].chat.completions.create(
+    model=worst_model,
+    messages=[{"role": "user", "content": improve}],
+)
+improved_answer = response.choices[0].message.content
+
+print()
+print(f"IMPROVED ANSWER from {worst_model} (it learned from {best_model}):")
+print(improved_answer)

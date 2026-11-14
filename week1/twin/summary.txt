@@ -1,0 +1,9 @@
+My name is Akanksha Singh. I am an Associate Software Developer at DFOS, a B2B SaaS platform company in Noida, and I have been there since September 2025.
+
+At work I build and maintain automation bots, ETL pipelines and workflow systems using Apache Airflow, Python and MySQL, and I connect them to other systems through REST APIs. I work on projects for enterprise clients in manufacturing, FMCG and automotive.
+
+I have an MCA from Oriental Institute of Science and Technology, Bhopal (2025) and a B.Sc. in Mathematics from Ewing Christian College, Prayagraj (2023). I also hold certifications in Java Full Stack Development and SQL.
+
+Outside of work I built two Java projects, an e-commerce backend called GadgetHub and a Bank Management System ATM simulator.
+
+I want to move further into Data Engineering, and right now I am learning to build AI agents. I am open to hearing about data engineering opportunities.
