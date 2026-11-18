@@ -196,16 +196,16 @@ async def email_guardrail(ctx, agent, message):
     return GuardrailFunctionOutput(output_info={"review": review}, tripwire_triggered=is_problem)
 
 
-cowboy_instructions = instructions + "\nSpeak like a cowboy"
+cowboy_instructions = instructions + "\nSpeak like a San"
 
 sales_agent_cowboy = Agent(
-    name="Cowboy",
+    name="san",
     instructions=cowboy_instructions,
     model=gemini_model,
     output_guardrails=[email_guardrail],
 )
 
-simple_cowboy = Agent(name="Simple Cowboy", instructions=cowboy_instructions, model=gemini_model)
+simple_cowboy = Agent(name="Simple san", instructions=cowboy_instructions, model=gemini_model)
 
 
 async def part3_guardrails():
